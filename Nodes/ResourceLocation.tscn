@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/ResourceLocation.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/outline.shader" type="Shader" id=2]
+[ext_resource path="res://Sprites/Plants/Yew_Tree.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Jamma_11.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Jamma_13.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Bandwidth_13.tres" type="DynamicFont" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/width = 0.0
+shader_param/outline_color = Color( 0, 1, 0, 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 1 )
+colors = PoolColorArray( 0, 0, 0, 0.196078 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[node name="ResourceLocation" type="Node2D" groups=[
+"resource",
+"selectable",
+]]
+script = ExtResource( 1 )
+available = 77000.0
+regenerates_per_cycle = 100.0
+workforce_capacity = 150.0
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="name" type="Label" parent="."]
+margin_left = -70.0
+margin_top = -50.0
+margin_right = 70.0
+margin_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Berries"
+align = 1
+valign = 1
+
+[node name="InfoTable" type="Node2D" parent="."]
+position = Vector2( 40, -30 )
+
+[node name="Background" type="NinePatchRect" parent="InfoTable"]
+margin_left = -10.0
+margin_top = -10.0
+margin_right = 202.0
+margin_bottom = 86.0
+texture = SubResource( 3 )
+
+[node name="variables" type="Label" parent="InfoTable"]
+margin_right = 70.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 5 )
+text = "Available:
+Cost:
+Regen:
+Capacity:"
+
+[node name="values" type="Label" parent="InfoTable"]
+margin_left = 80.0
+margin_right = 168.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 6 )
+text = "10 (-0/s)
+1
+0
+0/1
+"

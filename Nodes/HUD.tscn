@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Jamma_20.tres" type="DynamicFont" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 128
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Container" type="Container" parent="Margin/HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameAge" type="Label" parent="Margin/HBoxContainer/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "GAME AGE:"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.117647 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -254.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource( 2 )
+expand = true
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 44.0
+margin_bottom = 18.0
+text = "Debug"
